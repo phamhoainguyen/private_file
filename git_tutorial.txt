@@ -1,0 +1,177 @@
+Create repository
+Clone to Computer
+Edit, Add, do sth
+git add index.html (or git add .) (or git add -A) add everthing
+git status
+git commit -m "message"
+git push
+
+
+
+
+
+
+git pull
+edit, add...
+git status
+git add -A
+git commit -m "message"
+git push
+
+
+
+
+
+Solve conflicts
+
+Fix
+git add -Addgit commit
+
+
+:wq
+
+
+--------------LOCAL REPO-------------------  https://www.youtube.com/watch?v=HVsySz-h9r4
+
+check git version
+git --version
+
+git config --global user.name "Nguyen Pham"
+git config --global user.email "xxx@gmailcom"
+
+show info
+git config --list
+
+git help config
+git config --help
+git add --help
+
+-- initialize a repository from existing code
+git init (within diretory)
+
+
+-- Before First commit
+git status
+
+-- ignore a file does not commit
+touch .gitignore (tu dong tao ra 1 file)
+--edit ignore file (DS_Store \n.project \n *.py) bo qua tat ca cac file duoi nhu tren
+git status
+
+
+-- add file to staging area
+git add .gitignore
+git status
+git add -A
+
+-- remove file from staging area
+git reset filename.txt  (bo adding file)
+git reset  (reset all file)
+git status
+
+
+-- Our first commit
+
+git add -A  (add everything to staging area)
+git commit -m "message"
+git status
+git log (view history commit)
+
+
+--------------REMOTE REPO--------------------
+
+-- Cloning a remote repository
+
+git clone <url> <where to clone>
+git clone http:gitakjflkajfdla.git .
+
+-- Viewing information about the remote repository
+git remote -v  (view info repository)
+git branch -a  (view list branch)
+
+-- Pusshing changes
+-Commit changes like we did previously
+git diff (show me the changes)
+git status
+git add -A 
+git commit -m "message"
+
+--Then Push
+git pull origin master
+git push origin master
+--Common Workflow
+git branch calc-divide (create new branch)
+checkout calc-divide (we are working on calc-divide branch)
+git branch
+-change file
+git status
+git add -A 
+git commmit -m "message"
+
+--After commit Push branch to remote
+git pull origin calc-divide
+git push -u origin calc-divide (git push origin calc-divide, git push)
+git branc -a
+
+-- Merge a branch
+git checkout master
+git pull origin master
+git branch --merged
+git merge calc-divide (merge from calc-divide to master branch)
+git push origin master
+
+-- Deleting a branch
+git branch --merged
+git branch -d calc-divide
+git branch -a
+git push origin --delete calc-divide
+git branch -a 
+
+-- Fixing common mistake   (https://www.youtube.com/watch?v=FdZecVxzJbk)
+git check calc.py (checkout file need to edit)
+git status
+-edit file
+git status
+git add -A
+git commit -m "message" (wrong message)
+git log
+git commit --amend -m "Edit Message"  (change message)
+
+-- leave a file in .gitignore and I want to add file into last commit
+touch .gitignore (create .gitignore file)
+git status
+git add .gitignore
+git commit --amend 
+git log
+git log --stat 
+
+-- commit to wrong branch
+- Copy 6-7 characters in hash from master branch (1b81d3b)
+git checkout subtrac-feature
+git log
+git cherry-pick 1b81d3b
+git log
+
+git checkout master
+git log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
