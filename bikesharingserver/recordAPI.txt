@@ -1,0 +1,256 @@
+--------------------------------0Thêm record-------------------------------------
+		Phương thức POST
+	/api/records
+		
+	header: authorization: token (lấy từ asyncStorage)	
+	body: 
+	{
+	"vehicle" : 1,
+	"startLocation": {
+		"coordinates": [106.187777, 10.38777]
+	},
+	"endLocation": {
+		"coordinates": [107.187777, 10.28777]	
+	}, 
+	"startTime": "2017-12-26 19:05:05",
+	"price": 80000,
+	"distance": 100000,
+	"timeDuration": 30,
+	"startAddress": "05 Nguyễn Huệ, Tân Aa, tỉnh Tiền Giang",
+	"endAddress": "564 Phạm Văn Đồng, Quận Thủ Đức, thành phố Hồ Chí Minh",
+	"vehicleName": "Xe máy"
+	}
+
+	
+	nếu insert thành công trả về status 200 và recordID, ngược lại thất bại
+
+---------------------------------lấy lịch sử của người đăng -------------------------------
+	Phương thức GET
+	/api/records/myhistory
+	
+	header: authorization: token (lấy từ asyncStorage)	
+	
+	kết quả trả về là 1 mảng các record
+	
+	[
+    {
+        "_id": "5a40e96f6d7c731f006c4d15",
+        "recordID": 0,
+        "user_id": "5a40e88ddb01d210487e2734",
+        "userID": 0,
+        "vehicle": 1,
+        "startLocation": {
+            "_id": "5a40e96f6d7c731f006c4d17",
+            "coordinates": [
+                106.177777,
+                10.34777
+            ],
+            "type": "Point"
+        },
+        "endLocation": {
+            "_id": "5a40e96f6d7c731f006c4d16",
+            "coordinates": [
+                107.197777,
+                10.22777
+            ],
+            "type": "Point"
+        },
+        "startTime": "2017-12-25T10:05:05.000Z",
+        "price": 40000,
+        "distance": 65000,
+        "startAddress": "66 Lê Duẩn, Biên Hòa, tỉnh Đồng Nai",
+        "endAddress": "55 Nguyễn Văn Linh, Quận 7, thành phố Hồ Chí Minh",
+        "vehicleName": "Xe máy"
+    },
+    {
+        "_id": "5a40e9c86d7c731f006c4d18",
+        "recordID": 1,
+        "user_id": "5a40e88ddb01d210487e2734",
+        "userID": 0,
+        "vehicle": 1,
+        "startLocation": {
+            "_id": "5a40e9c86d7c731f006c4d1a",
+            "coordinates": [
+                106.107777,
+                10.30777
+            ],
+            "type": "Point"
+        },
+        "endLocation": {
+            "_id": "5a40e9c86d7c731f006c4d19",
+            "coordinates": [
+                107.107777,
+                10.20777
+            ],
+            "type": "Point"
+        },
+        "startTime": "2017-12-25T10:05:05.000Z",
+        "price": 30000,
+        "distance": 50000,
+        "startAddress": "05 Nguyễn Cư Trinh, Biên Hòa, tỉnh Đồng Nai",
+        "endAddress": "56 Nguyễn Thị Mịnh Khai, Quận 1, thành phố Hồ Chí Minh",
+        "vehicleName": "Xe máy"
+    },
+    {
+        "_id": "5a40ea596d7c731f006c4d1b",
+        "recordID": 2,
+        "user_id": "5a40e88ddb01d210487e2734",
+        "userID": 0,
+        "vehicle": 1,
+        "startLocation": {
+            "_id": "5a40ea596d7c731f006c4d1d",
+            "coordinates": [
+                106.187777,
+                10.38777
+            ],
+            "type": "Point"
+        },
+        "endLocation": {
+            "_id": "5a40ea596d7c731f006c4d1c",
+            "coordinates": [
+                107.187777,
+                10.28777
+            ],
+            "type": "Point"
+        },
+        "startTime": "2017-12-26T19:05:05.000Z",
+        "price": 80000,
+        "distance": 100000,
+        "startAddress": "05 Nguyễn Huệ, Tân Aa, tỉnh Tiền Giang",
+        "endAddress": "564 Phạm Văn Đồng, Quận Thủ Đức, thành phố Hồ Chí Minh",
+        "vehicleName": "Xe máy"
+    }
+]
+
+----------------------------------Tìm kiếm record-------------------------------------
+Phương thức GET
+	
+header: authorization: token (lấy từ asyncStorage)	
+	ví dụ: xử lý rồi ghép thành chuỗi
+	/api/records/getrecords/?lat=10.11111&long=106.111111&radius=100000&year=2017&month=12&date=25&hour=0&minute=10&vehicle=1
+	
+	
+Kết quả trả về 
+[
+    {
+        "_id": "5a40e9c86d7c731f006c4d18",
+        "recordID": 1,
+        "user_id": {
+            "_id": "5a40e88ddb01d210487e2734",
+            "userID": 0,
+            "name": "Phạm Hoài Nguyên",
+            "phoneNumber": "0988588136",
+            "city": "Hồ Chí Minh",
+            "gender": true
+        },
+        "userID": 0,
+        "vehicle": 1,
+        "startLocation": {
+            "_id": "5a40e9c86d7c731f006c4d1a",
+            "coordinates": [
+                106.107777,
+                10.30777
+            ],
+            "type": "Point"
+        },
+        "endLocation": {
+            "_id": "5a40e9c86d7c731f006c4d19",
+            "coordinates": [
+                107.107777,
+                10.20777
+            ],
+            "type": "Point"
+        },
+        "startTime": "2017-12-25T10:05:05.000Z",
+        "price": 30000,
+        "distance": 50000,
+        "startAddress": "05 Nguyễn Cư Trinh, Biên Hòa, tỉnh Đồng Nai",
+        "endAddress": "56 Nguyễn Thị Mịnh Khai, Quận 1, thành phố Hồ Chí Minh",
+        "vehicleName": "Xe máy"
+    },
+    {
+        "_id": "5a40e96f6d7c731f006c4d15",
+        "recordID": 0,
+        "user_id": {
+            "_id": "5a40e88ddb01d210487e2734",
+            "userID": 0,
+            "name": "Phạm Hoài Nguyên",
+            "phoneNumber": "0988588136",
+            "city": "Hồ Chí Minh",
+            "gender": true
+        },
+        "userID": 0,
+        "vehicle": 1,
+        "startLocation": {
+            "_id": "5a40e96f6d7c731f006c4d17",
+            "coordinates": [
+                106.177777,
+                10.34777
+            ],
+            "type": "Point"
+        },
+        "endLocation": {
+            "_id": "5a40e96f6d7c731f006c4d16",
+            "coordinates": [
+                107.197777,
+                10.22777
+            ],
+            "type": "Point"
+        },
+        "startTime": "2017-12-25T10:05:05.000Z",
+        "price": 40000,
+        "distance": 65000,
+        "startAddress": "66 Lê Duẩn, Biên Hòa, tỉnh Đồng Nai",
+        "endAddress": "55 Nguyễn Văn Linh, Quận 7, thành phố Hồ Chí Minh",
+        "vehicleName": "Xe máy"
+    },
+    {
+        "_id": "5a40ea596d7c731f006c4d1b",
+        "recordID": 2,
+        "user_id": {
+            "_id": "5a40e88ddb01d210487e2734",
+            "userID": 0,
+            "name": "Phạm Hoài Nguyên",
+            "phoneNumber": "0988588136",
+            "city": "Hồ Chí Minh",
+            "gender": true
+        },
+        "userID": 0,
+        "vehicle": 1,
+        "startLocation": {
+            "_id": "5a40ea596d7c731f006c4d1d",
+            "coordinates": [
+                106.187777,
+                10.38777
+            ],
+            "type": "Point"
+        },
+        "endLocation": {
+            "_id": "5a40ea596d7c731f006c4d1c",
+            "coordinates": [
+                107.187777,
+                10.28777
+            ],
+            "type": "Point"
+        },
+        "startTime": "2017-12-26T19:05:05.000Z",
+        "price": 80000,
+        "distance": 100000,
+        "startAddress": "05 Nguyễn Huệ, Tân Aa, tỉnh Tiền Giang",
+        "endAddress": "564 Phạm Văn Đồng, Quận Thủ Đức, thành phố Hồ Chí Minh",
+        "vehicleName": "Xe máy"
+    }
+]	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
