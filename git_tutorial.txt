@@ -101,7 +101,7 @@ git pull origin master
 git push origin master
 --Common Workflow
 git branch calc-divide (create new branch)
-checkout calc-divide (we are working on calc-divide branch)
+checkout calc-divide (switch branch, we are working on calc-divide branch)
 git branch
 -change file
 git status
